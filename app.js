@@ -3,13 +3,16 @@ const pensamentoDiv = document.getElementById('messagesArea');
 const inputThinker = document.getElementById('inputText');
 const btnSend = document.getElementById('btn');
 
-//Functions
 
-function adicionarItem(){
-    let paragrafo = document.createElement('p');
-    paragrafo.className = 'item';
-    paragrafo = inputThinker.textContent.trim();
-    pensamentoDiv.appendChild(paragrafo);
-}
+btnSend.addEventListener('click', ()=>{
+    const inputItem = inputThinker.value.trim();
+    if(!inputItem) return;
 
-btnSend.addEventListener('click', adicionarItem());
+    const divMessage = document.createElement('div');
+    divMessage.className = 'message';
+
+    divMessage.textContent = inputItem;
+
+    pensamentoDiv.appendChild(divMessage);
+    inputThinker.value = '';
+});
